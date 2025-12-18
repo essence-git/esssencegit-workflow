@@ -1,0 +1,23 @@
+name: essencegit team workflow
+
+on:
+  push:
+    branches:
+      - feature/*
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  integration-tests:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run integration tests
+        run: npm test
